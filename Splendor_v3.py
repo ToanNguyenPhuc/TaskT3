@@ -6,13 +6,17 @@ def getCardValue(state,card):
     type_card = np.array(card[1:6])
     type_card = np.where(type_card == 1)[0][0]
     player_stock_const = state[6+6:6+6+5]
+    # print('player_stock_const',player_stock_const)
     had = player_stock_const[type_card]
     point = card[0]
-    stock_require = card[-5:]
+    stock_require = card[6:11]
+    # print('stock_require',stock_require)
     result = player_stock_const -  stock_require
+    # print(result)
     need = sum(result[result < 0])
+    # print('need',need)
 
-    value =   type_card/(had*1) * point/(need+1)
+    value =  (point+0.1) * (need+0.1) - (had*0.1)
     return value
 def MainAgent(state,per):
     actions = getValidActions(state)
@@ -24,5 +28,3 @@ def MainAgent(state,per):
       cards.append(temp_card)
     value_arr = [getCardValue(state,card) for card in cards]
     return np.argmax(value_arr),per
-win,per = numba_main_2(MainAgent,10000,np.array([0.]),1)
-print('win',win)
