@@ -5,6 +5,14 @@ def getTypeAction(action):
   return __ACTIONS__[action][0]
 def getValueActions(action):
   return __ACTIONS__[action][1]
+@njit()
+def checkArrInArr(arr1,arr2):
+  # print('arr1,arr2',arr1,arr2)
+  arr_return = []
+  for i in range(len(arr1)):
+    if arr1[i] in arr2:
+      arr_return.append(i)
+  return arr_return
 def getSpecialCard(state):
     p_cards = state[0:52]
     p_cards = np.where(p_cards == 1)[0]
