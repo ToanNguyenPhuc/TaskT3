@@ -1,3 +1,98 @@
+@njit()
+def getLuaMi(state):
+    return state[1]
+@njit()
+def getNongTrai(state):
+   return state[2]
+@njit()
+def getTiemBanh(state):
+    return state[3]
+@njit()
+def getQuanCaPhe(state):
+    return state[4]
+@njit()
+def getCuaHangTienLoi(state):
+    return state[5]
+@njit()
+def getRung(state):
+    return state[6]
+def getNhaMayPhoMat(state):
+    return state[7]
+def getNhaMayNoiThat(state):
+    return state[8]
+def getMoQuang(state):
+    return state[9]
+@njit()
+def getQuanAnGiaDinh(state):
+    return state[10]
+def getVuonTao(state):
+    return state[11]
+@njit()
+def getChoTraiCay(state):
+    return state[12]
+def getSanVanDong(state):
+    return state[13]
+def getDaiTruyenHinh(state):
+    return state[14]
+def getTrungTamThuongMai(state):
+    return state[15]
+def get22dCard(state):
+    return state[16]
+def get16dCard(state):
+    return state[17]
+@njit()
+def get10dCard(state):
+    return state[18]
+@njit()
+def get4dCard(state):
+    return state[19]
+def getPlayerCoin(state):
+  return state[0]
+def getAllCardOnBoard(state):
+  return state[80:92]
+def getCardLuaMiOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[0]
+def getCardNongTraiOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[1]
+def getCardTiemBanhOnBoard(state):
+    card_on_board = getAllCardOnBoard(state)
+    return card_on_board[2]
+def getCardQuanCaPheOnBoard(state):
+    card_on_board = getAllCardOnBoard(state)
+    return card_on_board[3]
+def getCardCuaHangTienLoiOnBoard(state):
+    card_on_board = getAllCardOnBoard(state)
+    return card_on_board[4]
+def getCardRungOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[5]
+def getCardNhaMayPhomatOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[6]
+def getCardNhaMayNoiThatOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[7]
+def getCardMoQuangOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[8]
+def getCardQuanAnGiaDinhOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[9]
+def getCardVuonTaoOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[10]
+def getCardChoTraiCayOnBoard(state):
+  card_on_board = getAllCardOnBoard(state)
+  return card_on_board[11]
+def get4CardNeed(state,idCard):
+    return state[16+20*idCard:16+20*idCard+4]
+def get4PlayerCoin(state):
+    return [state[0],state[20],state[40],state[60]]
+def getTotalPlayerCard(state):
+  return sum(state[1:20])
+@njit()
 def MachiKoro(state,per):
     actions = getValidActions(state)
     actions = np.where(actions == 1)[0]
